@@ -1,0 +1,31 @@
+# Rust
+/target/
+**/*.rs.bk
+*.pdb
+Cargo.lock
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.direnv/
+.envrc
+
+# Nix
+result
+result-*
+.direnv/
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+
+# Build artifacts
+/dist/
+/build/
+
+# Debug
+debug

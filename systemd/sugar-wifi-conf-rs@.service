@@ -1,0 +1,33 @@
+[Unit]
+Description=Sugar WiFi Conf (Rust) BLE service (%i)
+After=dbus.service bluetooth.target NetworkManager.service
+Wants=bluetooth.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/
+
+# Defaults are intentionally conservative and easy to override.
+# Override per-instance with:
+#   systemctl edit sugar-wifi-conf-rs@<key>.service
+Environment="SUGAR_WIFI_CONF_RS_BIN=/usr/local/bin/sugar-wifi-conf-rs"
+Environment="SUGAR_WIFI_CONF_RS_CUSTOM_CONFIG=/opt/sugar-wifi-config/custom_config.json"
+Environment="RUST_LOG=info"
+
+ExecStart=${SUGAR_WIFI_CONF_RS_BIN} --key %i --custom-config ${SUGAR_WIFI_CONF_RS_CUSTOM_CONFIG}
+
+Restart=on-failure
+RestartSec=2
+StartLimitIntervalSec=30
+StartLimitBurst=5
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target
