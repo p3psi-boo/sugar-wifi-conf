@@ -1,0 +1,9 @@
+{
+    "items": [
+        {
+            "label": "Backward Compatible",
+            "command": "echo test"
+        }
+    ],
+    "commands": []
+}

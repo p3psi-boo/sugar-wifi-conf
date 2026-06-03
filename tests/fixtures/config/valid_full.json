@@ -1,0 +1,34 @@
+{
+    "info": [
+        {
+            "label": "CPU Temperature",
+            "command": "cat /sys/class/thermal/thermal_zone0/temp",
+            "interval": 5
+        },
+        {
+            "label": "Uptime",
+            "command": "uptime -p",
+            "interval": 60
+        },
+        {
+            "label": "Memory Usage",
+            "command": "free -h | grep Mem",
+            "interval": 30
+        }
+    ],
+    "commands": [
+        {
+            "label": "Restart Service",
+            "command": "systemctl restart myservice",
+            "uuid": "FD2B0001"
+        },
+        {
+            "label": "Update System",
+            "command": "apt update && apt upgrade -y"
+        },
+        {
+            "label": "Reboot Device",
+            "command": "reboot"
+        }
+    ]
+}
